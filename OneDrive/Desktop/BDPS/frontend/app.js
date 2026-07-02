@@ -354,7 +354,7 @@ _sb.auth.onAuthStateChange(async (event, session) => {
       const flaskOk = await API.health().catch(() => false);
       if (!flaskOk) {
         showAuth('login');
-        setTimeout(() => setAuthAlert('Cannot reach Flask server at localhost:5000. Make sure python app.py is running in your backend terminal.'), 200);
+        setTimeout(() => setAuthAlert('Cannot reach backend server. Please try again later.'), 200);
         await API.signOut();
         return;
       }

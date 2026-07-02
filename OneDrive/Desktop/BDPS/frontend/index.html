@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BDPS – Business Digital Presence Scoring</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+</head>
+<body>
+
+<!-- ── Auth pages (shown when logged out) ─────────────────── -->
+<div id="authRoot"></div>
+
+<!-- ── App shell (shown when logged in) ──────────────────── -->
+<div class="app" id="appRoot" style="display:none">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-icon">B</div>
+      <div>
+        <h1>BDPS</h1>
+        <p>Digital Presence</p>
+      </div>
+    </div>
+
+    <div class="sidebar-nav" id="sidebarNav">
+      <!-- populated by JS based on role -->
+    </div>
+
+    <div class="nav-divider"></div>
+
+    <div class="sidebar-footer">
+      <div class="user-card" onclick="navigate('profile')">
+        <div class="user-avatar" id="userAvatar">?</div>
+        <div>
+          <div class="user-name" id="userName">Loading…</div>
+          <div class="user-role" id="userRoleLabel">user</div>
+        </div>
+        <div class="conn-dot" id="connDot"></div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="search-wrap">
+        <span style="color:var(--text3);font-size:14px">🔍</span>
+        <input type="text" id="searchInput" placeholder="Search businesses…">
+      </div>
+      <div class="topbar-right">
+        <button class="icon-btn" title="Refresh" onclick="refreshPage()">🔄</button>
+        <button class="icon-btn" title="Add Business" onclick="openAddModal()" id="addBtnTop">➕</button>
+      </div>
+    </header>
+    <div class="page-content" id="pageContent">
+      <div class="loading-page"><div class="spinner spinner-lg"></div><p>Loading…</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Modal ──────────────────────────────────────────────── -->
+<div class="modal-bg" id="modal">
+  <div class="modal-box" id="modalBox">
+    <div class="modal-head">
+      <h2 id="modalTitle"></h2>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<!-- ── Toast container ────────────────────────────────────── -->
+<div class="toast-container" id="toastContainer"></div>
+
+<script src="api.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

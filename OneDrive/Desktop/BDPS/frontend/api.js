@@ -3,7 +3,7 @@
 // Auth state is managed via Supabase JS SDK (loaded in index.html).
 
 const API = {
-    baseUrl: 'https://bdps1.onrender.com/',
+    baseUrl: 'https://bdps1.onrender.com/api',
 
     // ── Supabase Auth helpers ──────────────────────────────────────────
     _supabase: null,
